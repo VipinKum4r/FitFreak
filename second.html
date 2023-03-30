@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calorie Breakdown</title>
+	<style>
+		* {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			font-family: sans-serif;
+			padding: 20px;
+		}
+
+		h1 {
+			margin-bottom: 20px;
+		}
+
+		.circle-chart {
+			display: inline-block;
+			position: relative;
+			margin: 20px;
+			width: 100px;
+			height: 100px;
+			border-radius: 50%;
+			background-color: #f2f2f2;
+		}
+
+		.circle-chart__left,
+		.circle-chart__right {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			clip: rect(0, 50px, 100px, 0);
+			border-radius: 50%;
+			background-color: #eb4d4b;
+		}
+
+		.circle-chart__right {
+			clip: rect(0, 100px, 100px, 50px);
+			background-color: #6ab04c;
+		}
+
+		.circle-chart__percent {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			font-size: 16px;
+			font-weight: bold;
+			color: #444;
+		}
+
+		.circle-chart--proteins .circle-chart__percent {
+			color: #eb4d4b;
+		}
+
+		.circle-chart--carbs .circle-chart__percent {
+			color: #6ab04c;
+		}
+
+		.circle-chart--fats .circle-chart__percent {
+			color: #f7b731;
+		}
+	</style>
+</head>
+<body>
+	<h1>Calorie Breakdown</h1>
+	<div>
+		<p>Your maintenance calories is <span id="maintenance-calories"></span>.</p>
+		<p>Breakdown:</p>
+		<div class="circle-chart circle-chart--proteins">
+			<div class="circle-chart__left"></div>
+			<div class="circle-chart__right"></div>
+			<div class="circle-chart__percent">30%</div>
+		</div>
+		<div class="circle-chart circle-chart--carbs">
+			<div class="circle-chart__left"></div>
+			<div class="circle-chart__right"></div>
+			<div class="circle-chart__percent">50%</div>
+		</div>
+		<div class="circle-chart circle-chart--fats">
+			<div class="circle-chart__left"></div>
+			<div class="circle-chart__right"></div>
+			<div class="circle-chart__percent">20%</div>
+		</div>
+	</div>
+	<script>
+		// Replace this with the actual maintenance calories
+		var maintenanceCalories = 2000;
+
+		// Update the maintenance calories in the HTML
+		document.getElementById('maintenance-calories').textContent = maintenanceCalories;
+
+		// Calculate the breakdown for each nutrient
+		var proteinCalories = maintenanceCalories * 0.3;
+		var carbCalories = maintenanceCalories * 0.5;
+	</script>
+</body>
+</html>	

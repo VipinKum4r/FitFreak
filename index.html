@@ -1,22 +1,102 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Calculate Maintenance Calorie</title>
-  </head>
-  <body>
-    <h1>Calculate Maintenance Calorie</h1>
-    <form action="/" method="POST">
-      <label for="height">Height (in cm):</label><br>
-      <input type="number" id="height" name="height" required><br>
-      <label for="weight">Weight (in kg):</label><br>
-      <input type="number" id="weight" name="weight" required><br>
-      <label for="activity">Activity Level:</label><br>
-      <select id="activity" name="activity">
-        <option value="low">Low</option>
-        <option value="medium">Medium</option>
-        <option value="high">High</option>
-      </select><br><br>
-      <input type="submit" value="Submit">
-    </form>
-  </body>
+<head>
+	<title>Calculate Maintenance Calorie</title>
+	<style>
+		body {
+			background-color: #f2f2f2;
+			font-family: Arial, sans-serif;
+		}
+		h1 {
+			text-align: center;
+			color: #4d4d4d;
+			margin-top: 50px;
+		}
+		form {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			margin-top: 50px;
+		}
+		input[type="text"] {
+			padding: 10px;
+			border-radius: 5px;
+			border: none;
+			margin-bottom: 20px;
+			width: 300px;
+			font-size: 16px;
+			text-align: center;
+			background-color: #fff;
+			box-shadow: 0px 2px 5px #c2c2c2;
+		}
+		select {
+			padding: 10px;
+			border-radius: 5px;
+			border: none;
+			margin-bottom: 20px;
+			width: 300px;
+			font-size: 16px;
+			text-align-last: center;
+			background-color: #fff;
+			box-shadow: 0px 2px 5px #c2c2c2;
+		}
+		input[type="submit"] {
+			padding: 10px;
+			border-radius: 5px;
+			border: none;
+			width: 200px;
+			font-size: 16px;
+			color: #fff;
+			background-color: #4d4d4d;
+			cursor: pointer;
+			transition: background-color 0.2s ease-in-out;
+		}
+		input[type="submit"]:hover {
+			background-color: #333333;
+		}
+		form {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+		
+		label {
+			display: flex;
+			align-items: center;
+			margin-bottom: 10px;
+			font-size: 18px;
+		}
+		
+		input[type="radio"] {
+			margin-right: 10px;
+		}
+	</style>
+</head>
+<body>
+	<h1>Calculate Maintenance Calorie</h1>
+	<form>
+		<h5>Select Your Gender</h5>
+		<label>
+			<input type="radio" name="gender" value="male">
+			Male
+		</label>
+		<label>
+			<input type="radio" name="gender" value="female">
+			Female
+		</label>
+		<label>
+			<input type="radio" name="gender" value="other">
+			Other
+		</label>
+		<input type="text" name="height" placeholder="Enter height in cm">
+		<input type="text" name="weight" placeholder="Enter weight in kg">
+		<select name="activity-level">
+			<option value="low">Low</option>
+			<option value="medium">Medium</option>
+			<option value="high">High</option>
+		</select>
+		<input type="submit" value="Calculate">
+	</form>
+</body>
 </html>
+

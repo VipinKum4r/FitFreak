@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calorie Breakdown</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+			background-color: #f2f2f2;
+		}
+		h1 {
+			text-align: center;
+			margin-top: 50px;
+		}
+		.container {
+			max-width: 500px;
+			margin: 0 auto;
+			padding: 20px;
+			background-color: #fff;
+			border-radius: 5px;
+			box-shadow: 0 0 10px rgba(0,0,0,0.2);
+		}
+		.circle-chart {
+			position: relative;
+			display: inline-block;
+			width: 200px;
+			height: 200px;
+			margin-top: 50px;
+			margin-bottom: 50px;
+			border-radius: 50%;
+			background-color: #e6e6e6;
+			box-shadow: 0 0 10px rgba(0,0,0,0.2);
+		}
+		.circle-chart .circle-chart__percent {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			font-size: 24px;
+			font-weight: bold;
+			color: #007bff;
+		}
+		.circle-chart .circle-chart__left,
+		.circle-chart .circle-chart__right {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			border-radius: 50%;
+			clip: rect(0, 100px, 200px, 0);
+		}
+		.circle-chart .circle-chart__left {
+			z-index: 1;
+			background-color: #007bff;
+			transform: rotate(0deg);
+		}
+		.circle-chart .circle-chart__right {
+			z-index: 2;
+			background-color: #f2f2f2;
+			transform: rotate(0deg);
+		}
+		.circle-chart--proteins .circle-chart__left {
+			transform: rotate(108deg);
+		}
+		.circle-chart--proteins .circle-chart__right {
+			transform: rotate(-252deg);
+		}
+		.circle-chart--carbs .circle-chart__left {
+			transform: rotate(54deg);
+		}
+		.circle-chart--carbs .circle-chart__right {
+			transform: rotate(-306deg);
+		}
+		.circle-chart--fats .circle-chart__left {
+			transform: rotate(162deg);
+		}
+		.circle-chart--fats .circle-chart__right {
+			transform: rotate(-198deg);
+		}
+	</style>
+</head>
+<body>
+	<h1>Calorie Breakdown</h1>
+	<div class="container">
+		<p>Your maintenance calories is <span id="maintenance-calories"></span>.</p>
+		<p>Here's how those calories break down:</p>
+		<div class="circle-chart circle-chart--proteins">
+			<div class="circle-chart__left"></div>
+			<div class="circle-chart__right"></div>
+			<div class="circle-chart__percent">30%</div>
+		</div>
+        <div class="circle-chart circle-chart--carbs">
+            <div class="circle-chart__left"></div>
+            <div class="circle-chart__right"></div>
+            <div class="circle-chart__percent">20%</div>
+        </div>
+        <div class="circle-chart circle-chart--fats">
+            <div class="circle-chart__left"></div>
+            <div class="circle-chart__right"></div>
+            <div class="circle-chart__percent">50%</div>
+        </div>
+    </div>
+    <script>
+        // Replace this with the actual maintenance calories
+        var maintenanceCalories = 2000;
+    
+        // Update the maintenance calories in the HTML
+        document.getElementById('maintenance-calories').textContent = maintenanceCalories;
+    
+        // Calculate the breakdown for each nutrient
+        var proteinCalories = maintenanceCalories * 0.3;
+        var carbCalories = maintenanceCalories * 0.2;
+        var fatCalories = maintenanceCalories * 0.5;
+    
+        // Update the styles of the circle charts to reflect the nutrient breakdown
+        document.querySelector('.circle-chart--proteins .circle-chart__left').style.transform = 'rotate(' + (108 + (proteinCalories / maintenanceCalories) * 360) + 'deg)';
+        document.querySelector('.circle-chart--proteins .circle-chart__right').style.transform = 'rotate(-' + (252 + (proteinCalories / maintenanceCalories) * 360) + 'deg)';
+        document.querySelector('.circle-chart--carbs .circle-chart__left').style.transform = 'rotate(' + (54 + (carbCalories / maintenanceCalories) * 360) + 'deg)';
+        document.querySelector('.circle-chart--carbs .circle-chart__right').style.transform = 'rotate(-' + (306 + (carbCalories / maintenanceCalories) * 360) + 'deg)';
+        document.querySelector('.circle-chart--fats .circle-chart__left').style.transform = 'rotate(' + (162 + (fatCalories / maintenanceCalories) * 360) + 'deg)';
+        document.querySelector('.circle-chart--fats .circle-chart__right').style.transform = 'rotate(-' + (198 + (fatCalories / maintenanceCalories) * 360) + 'deg)';
+    </script>
+</body>
+</html>    

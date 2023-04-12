@@ -75,21 +75,28 @@
 <body>
 	<h1>Calculate Maintenance Calorie</h1>
 	<form>
-		<label for="gender">Select Your Gender:</label>
-		<select id="gender" name="gender">
-			<option value="male">Male</option>
-			<option value="female">Female</option>
-			<option value="other">Other</option>
-		</select>
+		<h5>Select Your Gender</h5>
+		<label>
+			<input type="radio" name="gender" value="male">
+			Male
+		</label>
+		<label>
+			<input type="radio" name="gender" value="female">
+			Female
+		</label>
+		<label>
+			<input type="radio" name="gender" value="other">
+			Other
+		</label>
 		<input type="text" name="height" placeholder="Enter height in cm">
 		<input type="text" name="weight" placeholder="Enter weight in kg">
-		<label for="activity-level">Select Your Activity Level:</label>
-		<select id="activity-level" name="activity-level">
+		<select name="activity-level">
 			<option value="low">Low</option>
 			<option value="medium">Medium</option>
 			<option value="high">High</option>
 		</select>
-		<input type="submit" value="Calculate">
+		<a button  class="button" href="second.html">Calculate</button></a>
 	</form>
 </body>
 </html>
+

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Calorie Breakdown</title>
 	<style>
 		body {
@@ -90,6 +91,50 @@
 	
 }
 
+@media only screen and (max-width: 600px) {
+  .container {
+    max-width: 100%;
+    padding: 10px;
+	background-color: rgb(181, 229, 213);
+	
+  }
+
+  .circle-chart {
+    margin: 0 auto;
+  }
+
+  .circle-chart__percent {
+    font-size: 8px;
+  }
+}
+
+
+@media only screen and (min-width: 601px) and (max-width: 960px) {
+  .container {
+    max-width: 80%;
+	background-color:rgb(236, 219, 197);
+	
+  }
+
+  .circle-chart {
+    margin: 0 50px;
+  }
+}
+@media only screen and (min-width: 961px) {
+  .container {
+    max-width: 500px;
+  }
+
+  .circle-chart {
+    margin: 0 180px;
+  }
+
+  .circle-chart__percent {
+    font-size: 10px;
+  }
+}
+
+
 	</style>
 </head>
 <body>
@@ -98,14 +143,14 @@
 		<h1>🫧Your Goal calories is <span id="maintenance-calories"></span></h1><br>
 		<h2>👇Here's how those calories break down:</h2><br>
 		<div class="circle-chart">
-			<div class="circle-chart__progress circle-chart__carbs">
+			<div class="circle-chart_progress circle-chart_carbs">
 				<div class="circle-chart__percent">Carbs 50%</div>
 			</div>
 			<div class="circle-chart__background"></div>
-			<div class="circle-chart__progress circle-chart__protein">
+			<div class="circle-chart_progress circle-chart_protein">
 				<div class="circle-chart__percent">Protein 30%</div>
 			</div>
-			<div class="circle-chart__progress circle-chart__fats">
+			<div class="circle-chart_progress circle-chart_fats">
 				<div class="circle-chart__percent">Fats 20%</div>
 			</div>
 		</div>

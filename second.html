@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Calorie Breakdown</title>
 	<style>
 		* {
@@ -8,7 +9,19 @@
 			margin: 0;
 			padding: 0;
 		}
-
+        h2{
+        text-align: center;
+        color: #707907;
+        font-style: italic;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+        h4{
+        text-align: center;
+        color: #30af67;
+        font-style: italic;
+        font-size: xx-large;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
 		body {
 			font-family: sans-serif;
 			padding: 20px;
@@ -20,9 +33,9 @@
 
 		.circle-chart {
 			display: inline-block;
-			position: relative;
+			position:relative;
 			margin: 20px;
-			width: 100px;
+			width:  100px;
 			height: 100px;
 			border-radius: 50%;
 			background-color: #f2f2f2;
@@ -37,12 +50,12 @@
 			height: 100%;
 			clip: rect(0, 50px, 100px, 0);
 			border-radius: 50%;
-			background-color: #eb4d4b;
+			background-color: #ead40c;
 		}
 
 		.circle-chart__right {
 			clip: rect(0, 100px, 100px, 50px);
-			background-color: #6ab04c;
+			background-color: #d05334;
 		}
 
 		.circle-chart__percent {
@@ -52,43 +65,154 @@
 			transform: translate(-50%, -50%);
 			font-size: 16px;
 			font-weight: bold;
-			color: #444;
+			color: #1c0606;
 		}
 
 		.circle-chart--proteins .circle-chart__percent {
-			color: #eb4d4b;
+			color: #360b0a;
 		}
 
 		.circle-chart--carbs .circle-chart__percent {
-			color: #6ab04c;
+			color: #0f190b;
 		}
 
 		.circle-chart--fats .circle-chart__percent {
-			color: #f7b731;
+			color: #1e1607;
 		}
+        .circle-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.emoji-container {
+  position: absolute;
+  width: 40px; 
+  height: 40px; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.circle-chart--proteins .emoji-container {
+  top: 30px;
+  left: -50px; 
+}
+
+.circle-chart--carbs .emoji-container {
+  top: 30px; 
+  left:-40px;
+}
+
+.circle-chart--fats .emoji-container {
+  top: 30px;
+  left: -40px; 
+}
+
+.emoji {
+  font-size: 30px; 
+}
+
+.container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #edf7fa;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+	background-color: #e2f7e5;
+  }
+  h2 {
+    font-size: 24px;
+  }
+  h4 {
+    font-size: 20px;
+  }
+  .circle-chart {
+    margin: 10px;
+    width:  80px;
+    height: 80px;
+  }
+  .circle-chart__percent {
+    font-size: 12px;
+  }
+  .emoji {
+    font-size: 20px; 
+  }
+}
+
+
+@media (max-width: 480px) {
+  .container {
+    padding: 5px;
+	background-color: rgb(253, 251, 199);
+  }
+  h2 {
+    font-size: 20px;
+  }
+  h4 {
+    font-size: 16px;
+  }
+  .circle-chart {
+    margin: 5px;
+    width:  60px;
+    height: 60px;
+  }
+  .circle-chart__percent {
+    font-size: 10px;
+  }
+  .emoji {
+    font-size: 16px; 
+  }
+}
+
+        
 	</style>
 </head>
 <body>
-	<h1>Calorie Breakdown</h1>
-	<div>
-		<p>Your maintenance calories is <span id="maintenance-calories"></span>.</p>
-		<p>Breakdown:</p>
-		<div class="circle-chart circle-chart--proteins">
-			<div class="circle-chart__left"></div>
-			<div class="circle-chart__right"></div>
-			<div class="circle-chart__percent">30%</div>
-		</div>
-		<div class="circle-chart circle-chart--carbs">
-			<div class="circle-chart__left"></div>
-			<div class="circle-chart__right"></div>
-			<div class="circle-chart__percent">50%</div>
-		</div>
-		<div class="circle-chart circle-chart--fats">
-			<div class="circle-chart__left"></div>
-			<div class="circle-chart__right"></div>
-			<div class="circle-chart__percent">20%</div>
-		</div>
-	</div>
+
+	<div class="container">
+        <br>
+        <br>
+        <p>
+		<h2>Your maintenance calories is <span id="maintenance-calories"></span>.</h2>
+        </p>
+        <br>
+        <br>
+        <br>
+        <p><h4>You want to :-</h4></p>
+        <br>
+        <br>
+		<div class="circle-wrapper">
+            <p><div class="circle-chart circle-chart--proteins">
+              <div class="circle-chart__left"></div>
+              <div class="circle-chart__right"></div>
+              <a href="third.html" class="circle-chart__percent">LOOSE WEIGHT</a>
+              <div class="emoji-container">
+                <span class="emoji">🏃‍♂️</span>
+              </div>
+            </div></p>
+        <p><div class="circle-chart circle-chart--carbs">
+              <div class="circle-chart__left"></div>
+              <div class="circle-chart__right"></div>
+              <a href="third.html" class="circle-chart__percent">MAINTAIN WEIGHT</a>
+              <div class="emoji-container">
+                <span class="emoji">🧘‍♂️</span>
+              </div>
+            </div></p>
+        
+            <p><div class="circle-chart circle-chart--fats">
+              <div class="circle-chart__left"></div>
+              <div class="circle-chart__right"></div>
+              <a href="third.html" class="circle-chart__percent">GAIN WEIGHT</a>
+              <div class="emoji-container">
+                <span class="emoji">🏋️‍♀️</span>
+                </div>
+            </div></p>
+    </div>
 	<script>
 		// Replace this with the actual maintenance calories
 		var maintenanceCalories = 2000;
@@ -101,4 +225,4 @@
 		var carbCalories = maintenanceCalories * 0.5;
 	</script>
 </body>
-</html>	
+</html>

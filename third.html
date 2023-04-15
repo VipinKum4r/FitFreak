@@ -1,179 +1,56 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Calorie Breakdown</title>
-	<style>
+	<title>Result Page</title>
+	<script src="https://cdn.jsdelivr.net/npm/apexcharts@3.27.0/dist/apexcharts.min.js"></script>
+	<style type="text/css">
 		body {
 			font-family: Arial, sans-serif;
-			margin: 0;
-			padding: 0;
-			background-color: #f2f2f2;
 		}
 		h1 {
 			text-align: center;
 			margin-top: 50px;
-			color: rgb(164, 15, 201);
-			font-family: 'Times New Roman', Times, serif;		
+			margin-bottom: 30px;
 		}
-		h2 {
-			text-align: center;
-			margin-top: 50px;
-			color: rgb(201, 15, 117);
-			font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;		
-		}
-		.container {
-			max-width: 500px;
+		.chart-container {
+			width: 500px;
 			margin: 0 auto;
-			padding: 20px;
-			background-color: #ddedd4;
-			border-radius: 5px;
-			box-shadow: 0 0 10px rgba(0,0,0,0.2);
 		}
-		.circle-chart {
-    		position: relative;
-    		display: inline-block;
-    		width: 120px;
-    		height: 120px;
-    		border-radius: 50%;
-    		background-color: #f5f5f5;
-    		font-size: 24px;
-    		line-height: 120px;
-    		text-align: center;
-    		color: #555;
-			margin:0 180px;
-		}
-
-.circle-chart__background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-	box-sizing: border-box;
-    border-radius: 50%;
-    background-color: #ddd;
-}
-
-.circle-chart__progress {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    clip: rect(0, 60px, 120px, 0);
-}
-.circle-chart__carbs {
-    background-color: #87ceeb;
-    z-index: 3;
-    transform: rotate(120deg);
-}
-.circle-chart__protein {
-    background-color: #ff8d50;
-    z-index: 2;
-    transform: rotate(0deg);
-}
-
-.circle-chart__fats {
-    background-color: #98fb98;
-    z-index: 1;
-    transform: rotate(240deg);
-}
-.circle-chart__percent {
-    position:absolute;
-    top: 53%;
-    left: 20%;
-    transform: translate(-40%, -50%);
-    font-size: 10px;
-    font-weight: bold;
-	color: black;
-	
-}
-
-@media only screen and (max-width: 600px) {
-  .container {
-    max-width: 100%;
-    padding: 10px;
-	background-color: rgb(181, 229, 213);
-	
-  }
-
-  .circle-chart {
-    margin: 0 auto;
-  }
-
-  .circle-chart__percent {
-    font-size: 8px;
-  }
-}
-
-
-@media only screen and (min-width: 601px) and (max-width: 960px) {
-  .container {
-    max-width: 80%;
-	background-color:rgb(236, 219, 197);
-	
-  }
-
-  .circle-chart {
-    margin: 0 50px;
-  }
-}
-@media only screen and (min-width: 961px) {
-  .container {
-    max-width: 500px;
-  }
-
-  .circle-chart {
-    margin: 0 180px;
-  }
-
-  .circle-chart__percent {
-    font-size: 10px;
-  }
-}
-
-
 	</style>
 </head>
 <body>
-	
-	<div class="container">
-		<h1>🫧Your Goal calories is <span id="maintenance-calories"></span></h1><br>
-		<h2>👇Here's how those calories break down:</h2><br>
-		<div class="circle-chart">
-			<div class="circle-chart_progress circle-chart_carbs">
-				<div class="circle-chart__percent">Carbs 50%</div>
-			</div>
-			<div class="circle-chart__background"></div>
-			<div class="circle-chart_progress circle-chart_protein">
-				<div class="circle-chart__percent">Protein 30%</div>
-			</div>
-			<div class="circle-chart_progress circle-chart_fats">
-				<div class="circle-chart__percent">Fats 20%</div>
-			</div>
-		</div>
-    </div>
-    <script>
-        // Replace this with the actual maintenance calories
-       
-    
-        // Update the maintenance calories in the HTML
-        document.getElementById('maintenance-calories').textContent = maintenanceCalories;
-    
-        // Calculate the breakdown for each nutrient
-        var proteinCalories = maintenanceCalories * 0.3;
-        var carbCalories = maintenanceCalories * 0.2;
-        var fatCalories = maintenanceCalories * 0.5;
-    
-        // Update the styles of the circle charts to reflect the nutrient breakdown
-        document.querySelector('.circle-chart--proteins .circle-chart__left').style.transform = 'rotate(' + (108 + (proteinCalories / maintenanceCalories) * 360) + 'deg)';
-        document.querySelector('.circle-chart--proteins .circle-chart__right').style.transform = 'rotate(-' + (252 + (proteinCalories / maintenanceCalories) * 360) + 'deg)';
-        document.querySelector('.circle-chart--carbs .circle-chart__left').style.transform = 'rotate(' + (54 + (carbCalories / maintenanceCalories) * 360) + 'deg)';
-        document.querySelector('.circle-chart--carbs .circle-chart__right').style.transform = 'rotate(-' + (306 + (carbCalories / maintenanceCalories) * 360) + 'deg)';
-        document.querySelector('.circle-chart--fats .circle-chart__left').style.transform = 'rotate(' + (162 + (fatCalories / maintenanceCalories) * 360) + 'deg)';
-        document.querySelector('.circle-chart--fats .circle-chart__right').style.transform = 'rotate(-' + (198 + (fatCalories / maintenanceCalories) * 360) + 'deg)';
-    </script>
+	<h1>Your Goal Calorie is:</h1>
+	<div id="goalCalorie" style="text-align: center; font-size: 30px;"></div>
+	<div class="chart-container">
+		<div id="chart"></div>
+	</div>
+	<script type="text/javascript">
+		const urlParams = new URLSearchParams(window.location.search);
+		const goalType = urlParams.get("goalType");
+		const goalCalorie = urlParams.get("goalCalorie");
+
+		document.getElementById("goalCalorie").innerHTML = goalCalorie;
+
+		const chart = new ApexCharts(document.querySelector("#chart"), {
+			chart: {
+				type: "pie",
+				width: "100%",
+				height: "auto",
+			},
+			series: [40, 30, 30],
+			labels: ["Carbs", "Protein", "Fats"],
+			colors: ["#FFA500", "#00FF00", "#0000FF"],
+			legend: {
+				show: false,
+			},
+			dataLabels: {
+				style: {
+					fontSize: "18px",
+				}
+			}
+		});
+
+		chart.render();
+	</script>
 </body>
 </html>

@@ -1,102 +1,74 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-UK">
 <head>
-	<title>Calculate Maintenance Calorie</title>
+	<meta charset="UTF-8">
+	<title>Maintenance Calorie Calculator</title>
 	<style>
-		body {
-			background-color: #f2f2f2;
-			font-family: Arial, sans-serif;
-		}
-		h1 {
-			text-align: center;
-			color: #4d4d4d;
-			margin-top: 50px;
-		}
-		form {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			margin-top: 50px;
-		}
-		input[type="text"] {
+		.block{
+			margin: auto;
+			width: 50%;
+			border: 3px solid green;
 			padding: 10px;
-			border-radius: 5px;
-			border: none;
-			margin-bottom: 20px;
-			width: 300px;
-			font-size: 16px;
-			text-align: center;
-			background-color: #fff;
-			box-shadow: 0px 2px 5px #c2c2c2;
-		}
-		select {
-			padding: 10px;
-			border-radius: 5px;
-			border: none;
-			margin-bottom: 20px;
-			width: 300px;
-			font-size: 16px;
-			text-align-last: center;
-			background-color: #fff;
-			box-shadow: 0px 2px 5px #c2c2c2;
-		}
-		input[type="submit"] {
-			padding: 10px;
-			border-radius: 5px;
-			border: none;
-			width: 200px;
-			font-size: 16px;
-			color: #fff;
-			background-color: #4d4d4d;
-			cursor: pointer;
-			transition: background-color 0.2s ease-in-out;
-		}
-		input[type="submit"]:hover {
-			background-color: #333333;
-		}
-		form {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-		}
-		
-		label {
-			display: flex;
-			align-items: center;
-			margin-bottom: 10px;
-			font-size: 18px;
-		}
-		
-		input[type="radio"] {
-			margin-right: 10px;
-		}
+			  }
 	</style>
 </head>
 <body>
-	<h1>Calculate Maintenance Calorie</h1>
-	<form>
-		<h5>Select Your Gender</h5>
-		<label>
-			<input type="radio" name="gender" value="male">
-			MALE
-		</label>
-		<label>
-			<input type="radio" name="gender" value="female">
-			FEMALE
-		</label>
-		<label for="age">Enter Your Age:</label>
-		<input type="number" name="age" placeholder="Enter age"><br>
-		<label for="age">Enter Your Height:</label>
-		<input type="number" name="height" placeholder="Enter height in cm"><br>
-		<label for="age">Enter Your Weight:</label>
-		<input type="number" name="weight" placeholder="Enter weight in kg"><br
-		<select name="activity-level">
-			<option value="low">Low</option>
-			<option value="medium">Medium</option>
-			<option value="high">High</option>
-		</select>
-		<a button  class="button" href="second.html">Calculate</button></a>
-	</form>
+	<div class="block">
+		<h1>Maintenance Calorie Calculator</h1>
+		<form>
+			<label for="age">Age:</label>
+			<input type="number" id="age" name="age" required>
+			<br>
+			<label for="height">Height (in cm):</label>
+			<input type="number" id="height" name="height" required>
+			<br>
+			<label for="weight">Weight (in kg):</label>
+			<input type="number" id="weight" name="weight" required>
+			<br>
+			<label for="gender">Gender:</label>
+			<select id="gender" name="gender" required>
+				<option value="" disabled selected>Select Gender</option>
+				<option value="male">Male</option>
+				<option value="female">Female</option>
+			</select>
+			<br>
+			<label for="activity">Activity Level:</label>
+			<select id="activity" name="activity" required>
+				<option value="" disabled selected>Select Activity Level</option>
+				<option value="low">Low (sedentary lifestyle)</option>
+				<option value="medium">Medium (light exercise/sports 1-3 days per week)</option>
+				<option value="high">High (moderate exercise/sports 3-5 days per week)</option>
+			</select>
+			<br>
+			<button type="button" onclick="calculateMaintenanceCalorie()">Calculate</button>
+		</form>
+		<div id="result"></div>
+	</div>
+	<script>
+		function calculateMaintenanceCalorie() {
+			const age = parseInt(document.getElementById("age").value);
+			const height = parseInt(document.getElementById("height").value);
+			const weight = parseInt(document.getElementById("weight").value);
+			const gender = document.getElementById("gender").value;
+			const activity = document.getElementById("activity").value;
+			let bmr;
+			if (gender === "male") {
+				bmr = 10 * weight + 6.25 * height - 5 * age + 5;
+			} else if (gender === "female") {
+				bmr = 10 * weight + 6.25 * height - 5 * age - 161;
+			}
+			let maintenanceCalorie;
+			if (activity === "low") {
+				maintenanceCalorie = bmr * 1.2;
+			} else if (activity === "medium") {
+				maintenanceCalorie = bmr * 1.5;
+			} else if (activity === "high") {
+				maintenanceCalorie = bmr * 1.9;
+			}
+			const urlParams = new URLSearchParams(window.location.search);
+			urlParams.set('maintenanceCalorie', Math.round(maintenanceCalorie));
+			window.location.href = "second.html?" + urlParams.toString();
+		}
+	</script>
 </body>
 </html>
-

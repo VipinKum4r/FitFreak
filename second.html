@@ -1,228 +1,53 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-UK">
 <head>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Calorie Breakdown</title>
-	<style>
-		* {
-			box-sizing: border-box;
-			margin: 0;
-			padding: 0;
-		}
-        h2{
-        text-align: center;
-        color: #707907;
-        font-style: italic;
-        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-        }
-        h4{
-        text-align: center;
-        color: #30af67;
-        font-style: italic;
-        font-size: xx-large;
-        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-        }
-		body {
-			font-family: sans-serif;
-			padding: 20px;
-		}
-
-		h1 {
-			margin-bottom: 20px;
-		}
-
-		.circle-chart {
-			display: inline-block;
-			position:relative;
-			margin: 20px;
-			width:  100px;
-			height: 100px;
-			border-radius: 50%;
-			background-color: #f2f2f2;
-		}
-
-		.circle-chart__left,
-		.circle-chart__right {
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			clip: rect(0, 50px, 100px, 0);
-			border-radius: 50%;
-			background-color: #ead40c;
-		}
-
-		.circle-chart__right {
-			clip: rect(0, 100px, 100px, 50px);
-			background-color: #d05334;
-		}
-
-		.circle-chart__percent {
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-			font-size: 16px;
-			font-weight: bold;
-			color: #1c0606;
-		}
-
-		.circle-chart--proteins .circle-chart__percent {
-			color: #360b0a;
-		}
-
-		.circle-chart--carbs .circle-chart__percent {
-			color: #0f190b;
-		}
-
-		.circle-chart--fats .circle-chart__percent {
-			color: #1e1607;
-		}
-        .circle-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.emoji-container {
-  position: absolute;
-  width: 40px; 
-  height: 40px; 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.circle-chart--proteins .emoji-container {
-  top: 30px;
-  left: -50px; 
-}
-
-.circle-chart--carbs .emoji-container {
-  top: 30px; 
-  left:-40px;
-}
-
-.circle-chart--fats .emoji-container {
-  top: 30px;
-  left: -40px; 
-}
-
-.emoji {
-  font-size: 30px; 
-}
-
-.container {
-  width: 100%;
-  max-width: 800px;
-  margin: 0 auto;
-  background-color: #edf7fa;
-}
-
-@media (max-width: 768px) {
-  .container {
-    padding: 10px;
-	background-color: #e2f7e5;
-  }
-  h2 {
-    font-size: 24px;
-  }
-  h4 {
-    font-size: 20px;
-  }
-  .circle-chart {
-    margin: 10px;
-    width:  80px;
-    height: 80px;
-  }
-  .circle-chart__percent {
-    font-size: 12px;
-  }
-  .emoji {
-    font-size: 20px; 
-  }
-}
-
-
-@media (max-width: 480px) {
-  .container {
-    padding: 5px;
-	background-color: rgb(253, 251, 199);
-  }
-  h2 {
-    font-size: 20px;
-  }
-  h4 {
-    font-size: 16px;
-  }
-  .circle-chart {
-    margin: 5px;
-    width:  60px;
-    height: 60px;
-  }
-  .circle-chart__percent {
-    font-size: 10px;
-  }
-  .emoji {
-    font-size: 16px; 
-  }
-}
-
-        
-	</style>
+	<meta charset="UTF-8">
+	<title>Goal Calorie - Maintenance Calorie Calculator</title>
+  <style>  
+      .block{
+			margin: auto;
+			width: 50%;
+			border: 3px solid blue;
+			padding: 10px;
+			  }
+  </style>
 </head>
 <body>
-
-	<div class="container">
-        <br>
-        <br>
-        <p>
-		<h2>Your maintenance calories is <span id="maintenance-calories"></span>.</h2>
-        </p>
-        <br>
-        <br>
-        <br>
-        <p><h4>You want to :-</h4></p>
-        <br>
-        <br>
-		<div class="circle-wrapper">
-            <p><div class="circle-chart circle-chart--proteins">
-              <div class="circle-chart__left"></div>
-              <div class="circle-chart__right"></div>
-              <a href="third.html" class="circle-chart__percent">LOOSE WEIGHT</a>
-              <div class="emoji-container">
-                <span class="emoji">🏃‍♂️</span>
-              </div>
-            </div></p>
-        <p><div class="circle-chart circle-chart--carbs">
-              <div class="circle-chart__left"></div>
-              <div class="circle-chart__right"></div>
-              <a href="third.html" class="circle-chart__percent">MAINTAIN WEIGHT</a>
-              <div class="emoji-container">
-                <span class="emoji">🧘‍♂️</span>
-              </div>
-            </div></p>
-        
-            <p><div class="circle-chart circle-chart--fats">
-              <div class="circle-chart__left"></div>
-              <div class="circle-chart__right"></div>
-              <a href="third.html" class="circle-chart__percent">GAIN WEIGHT</a>
-              <div class="emoji-container">
-                <span class="emoji">🏋️‍♀️</span>
-                </div>
-            </div></p>
-    </div>
+  <div class="block">
+    <h1>Your maintenance calorie is: <span id="maintenanceCalorie"></span> calories</h1>
+    <form>
+      <fieldset>
+        <legend>Select your goal:</legend>
+        <label><input type="radio" name="goal" value="lose">Lose weight </label><br>
+        <label><input type="radio" name="goal" value="gain">Gain weight</label><br>
+        <label><input type="radio" name="goal" value="maintain">Maintain weight</label>
+      </fieldset>
+    </form>
+    <button onclick="calculateGoalCalorie()">Calculate</button>
+  </div>
 	<script>
-		// Replace this with the actual maintenance calories
-		var maintenanceCalories = 2000;
+		const urlParams = new URLSearchParams(window.location.search);
+		const maintenanceCalorie = urlParams.get('maintenanceCalorie');
+		document.getElementById("maintenanceCalorie").innerHTML = maintenanceCalorie;
 
-		// Update the maintenance calories in the HTML
-		document.getElementById('maintenance-calories').textContent = maintenanceCalories;
-
-		// Calculate the breakdown for each nutrient
-		var proteinCalories = maintenanceCalories * 0.3;
-		var carbCalories = maintenanceCalories * 0.5;
+		function calculateGoalCalorie() {
+			const maintenanceCalorieValue = parseInt(maintenanceCalorie);
+			let goalCalorieValue = 0;
+			const goalRadios = document.getElementsByName("goal");
+			for (let i = 0; i < goalRadios.length; i++) {
+				if (goalRadios[i].checked) {
+					const goalValue = goalRadios[i].value;
+					if (goalValue === "lose") {
+						goalCalorieValue = maintenanceCalorieValue - 400;
+					} else if (goalValue === "gain") {
+						goalCalorieValue = maintenanceCalorieValue + 400;
+					} else {
+						goalCalorieValue = maintenanceCalorieValue;
+					}
+				}
+			}
+      window.location.href = `third.html?goalCalorie=${goalCalorieValue}`;
+		}
 	</script>
 </body>
 </html>

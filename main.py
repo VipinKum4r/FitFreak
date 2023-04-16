@@ -16,7 +16,7 @@ def index():
         elif activity == 'high':
             maintenance_calorie = 1.9 * (10 * weight + 6.25 * height - 5 * 25 + 5)
         
-        return render_template('result.html', prediction_text=maintenance_calorie)
+        return render_template('second.html', prediction_text=maintenance_calorie)
     
     return render_template('index.html')
 

@@ -1,1 +1,101 @@
 
+<!DOCTYPE html>
+<html lang="en-UK">
+<head>
+	<meta charset="UTF-8">
+	<title>Goal Calorie - Maintenance Calorie Calculator</title>
+	<style type="text/css">
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f2f2f2;
+			margin: 0;
+			padding: 0;
+		}
+		h1 {
+			text-align: center;
+			margin-top: 50px;
+			margin-bottom: 30px;
+		}
+		form {
+			width: 500px;
+			margin: 0 auto;
+			background-color: #fff;
+			border-radius: 10px;
+			padding: 20px;
+			box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+		}
+		label {
+			display: block;
+			margin-bottom: 10px;
+		}
+		input[type="number"] {
+			width: 100%;
+			padding: 8px;
+			margin-bottom: 20px;
+			box-sizing: border-box;
+			border: 2px solid #ccc;
+			border-radius: 4px;
+		}
+		select {
+			width: 100%;
+			padding: 8px;
+			margin-bottom: 20px;
+			box-sizing: border-box;
+			border: 2px solid #ccc;
+			border-radius: 4px;
+			background-color: #f8f8f8;
+		}
+		button[type="button"] {
+			background-color: #4CAF50;
+			color: white;
+			padding: 12px 20px;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+			position: relative;
+			left:58%
+		}
+		button[type="button"]:hover {
+			background-color: #45a049;
+		}
+	</style>
+</head>
+<body>
+  <div class="block">
+    <h1>Your maintenance calorie is: <span id="maintenanceCalorie"></span> calories</h1>
+    <form>
+      <fieldset>
+        <legend>Select your goal:</legend>
+        <label><input type="radio" name="goal" value="lose">Lose weight </label><br>
+        <label><input type="radio" name="goal" value="gain">Gain weight</label><br>
+        <label><input type="radio" name="goal" value="maintain">Maintain weight</label>
+      </fieldset>
+    </form>
+    <button type="button" onclick="calculateGoalCalorie()">Calculate</button>
+  </div>
+	<script>
+		const urlParams = new URLSearchParams(window.location.search);
+		const maintenanceCalorie = urlParams.get('maintenanceCalorie');
+		document.getElementById("maintenanceCalorie").innerHTML = maintenanceCalorie;
+
+		function calculateGoalCalorie() {
+			const maintenanceCalorieValue = parseInt(maintenanceCalorie);
+			let goalCalorieValue = 0;
+			const goalRadios = document.getElementsByName("goal");
+			for (let i = 0; i < goalRadios.length; i++) {
+				if (goalRadios[i].checked) {
+					const goalValue = goalRadios[i].value;
+					if (goalValue === "lose") {
+						goalCalorieValue = maintenanceCalorieValue - 400;
+					} else if (goalValue === "gain") {
+						goalCalorieValue = maintenanceCalorieValue + 400;
+					} else {
+						goalCalorieValue = maintenanceCalorieValue;
+					}
+				}
+			}
+      window.location.href = `third.html?goalCalorie=${goalCalorieValue}`;
+		}
+	</script>
+</body>
+</html>

@@ -20,5 +20,13 @@ def index():
     
     return render_template('index.html')
 
+@app.route('/second.html')
+def second():
+  return render_template('second.html')
+
+@app.route('/third.html')
+def third():
+  return render_template('third.html')
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0')

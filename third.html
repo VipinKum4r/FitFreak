@@ -31,13 +31,17 @@
 
 		document.getElementById("goalCalorie").innerHTML = goalCalorie;
 
+		const carbCalories = Math.round(goalCalorie * 0.4);
+		const proteinCalories = Math.round(goalCalorie * 0.3);
+		const fatCalories = Math.round(goalCalorie * 0.3);
+
 		const chart = new ApexCharts(document.querySelector("#chart"), {
 			chart: {
 				type: "pie",
 				width: "100%",
 				height: "auto",
 			},
-			series: [40, 30, 30],
+			series: [carbCalories, proteinCalories, fatCalories],
 			labels: ["Carbs", "Protein", "Fats"],
 			colors: ["#FFA500", "#00FF00", "#0000FF"],
 			legend: {
